@@ -13,7 +13,10 @@
     border-radius: 12px;
     padding: 50px 30px 30px;
     max-width: 340px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    min-height: 460px;
 
     &__title{
         text-align: center;

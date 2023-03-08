@@ -4,6 +4,7 @@ import './Login.scss';
 import Handlebars from 'handlebars'
 import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
+import { REG_LINK } from "../../../utils/links";
 
 export default function Login(){
     return CardPage({
@@ -22,7 +23,7 @@ export default function Login(){
                 text: 'Войти',
                 sublink: {
                     text: 'Нет аккаунта?',
-                    link: '/registration'
+                    link: REG_LINK
                 }
             })
         })

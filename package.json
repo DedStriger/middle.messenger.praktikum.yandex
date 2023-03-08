@@ -5,8 +5,8 @@
   "main": "index.js",
   "engine": "v14.21.2",
   "scripts": {
-    "dev": "parcel ./static/index.hbs",
-    "server": "node ./app.js"
+    "watch": "parcel ./static/index.hbs",
+    "start": "node ./app.js"
   },
   "keywords": [],
   "author": "",

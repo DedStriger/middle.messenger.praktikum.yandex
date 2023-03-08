@@ -6,7 +6,6 @@ export default `
         </div>
         <div class='signin-form__buttons'>
             {{{button}}}
-            {{{sublink}}}
         </div>
     </form>
 `
