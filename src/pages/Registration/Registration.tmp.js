@@ -1,4 +1,5 @@
 export default `
+    <form>
     {{{mail}}}
     {{{login}}}
     {{{name}}}
@@ -7,4 +8,5 @@ export default `
     {{{pass}}}
     {{{second_pass}}}
     {{{button}}}
+    </form>
 `
