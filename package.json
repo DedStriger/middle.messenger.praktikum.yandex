@@ -1,0 +1,23 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engine": "v14.21.2",
+  "scripts": {
+    "dev": "parcel ./static/index.hbs",
+    "server": "node ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/transformer-sass": "^2.8.3",
+    "express": "^4.18.2",
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}
