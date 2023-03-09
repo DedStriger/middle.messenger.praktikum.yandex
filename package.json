@@ -2,10 +2,10 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "engine": "v14.21.2",
   "scripts": {
     "watch": "parcel ./static/index.hbs",
+    "build": "parcel build ./static/index.hbs",
     "start": "node ./app.js"
   },
   "keywords": [],
