@@ -6,6 +6,8 @@ const { LOGIN_LINK, REG_LINK, CHAT_LINK, SERVER_LINK } = require("../../utils/li
 const root = document.getElementById('root')
 
 switch(window.location.pathname){
+    case '/':
+    case LOGIN_LINK + '/':
     case LOGIN_LINK: {
         root.innerHTML = Login();
         break;

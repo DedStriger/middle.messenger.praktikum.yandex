@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "parcel ./static/index.hbs",
     "build": "parcel build ./static/index.hbs",
-    "start": "node ./app.js"
+    "start": "npm run build && node ./app.js"
   },
   "keywords": [],
   "author": "",
