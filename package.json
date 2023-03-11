@@ -2,7 +2,7 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "",
-  "engine": "v14.21.2",
+  "engine": { "node" : ">=12" },
   "scripts": {
     "watch": "parcel ./static/index.hbs",
     "build": "parcel build ./static/index.hbs && node ./copy.js",

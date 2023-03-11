@@ -1,7 +1,7 @@
 export default `
 <div class="container">
 <div class="card">
-    <div class="card__title">{{title}}</div>
+    <h2 class="card__title">{{title}}</h2>
     {{{content}}}
 </div>
 </div>
