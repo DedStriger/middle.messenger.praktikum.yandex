@@ -25,7 +25,7 @@ export default function Edit(){
         }),
         name: EditInput({
             label: 'Имя',
-            name: 'name',
+            name: 'first_name',
             value: 'Иван'
         }),
         second_name: EditInput({
@@ -35,7 +35,7 @@ export default function Edit(){
         }),
         chat_name: EditInput({
             label: 'Имя в чате',
-            name: 'chat_name',
+            name: 'display_name',
             value: 'Иван'
         }),
         phone: EditInput({
@@ -45,17 +45,17 @@ export default function Edit(){
         }),
         new_pass: EditInput({
             label: 'Новый пароль',
-            name: 'new_pass',
+            name: 'newPassword',
             type: 'password',
         }),
         old_pass: EditInput({
             label: 'Старый пароль',
-            name: 'old_pass',
+            name: 'oldPassword',
             type: 'password',
         }),
         second_new_pass: EditInput({
             label: 'Новый пароль (еще раз)',
-            name: 'second_pass',
+            name: 'secondNewPassword',
             type: 'password',
         }),
         button: Button({
