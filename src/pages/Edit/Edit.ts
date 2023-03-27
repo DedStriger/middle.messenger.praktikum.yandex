@@ -1,6 +1,6 @@
 import './Edit.scss';
-import Handlebars from 'handlebars';
-import tmp from './Edit.tmp.js'
+import * as Handlebars from 'handlebars';
+import tmp from './Edit.tmp'
 import Back from '../../components/Back/Back';
 import Button from '../../components/Button/Button';
 import Avatar from '../../components/Avatar/Avatar';
@@ -11,7 +11,7 @@ export default function Edit(){
     const t = Handlebars.compile(tmp)
     return t({
         back: Back(),
-        avatar: Avatar(),
+        avatar: Avatar({}),
         email: EditInput({
             label: 'Почта',
             name: 'email',

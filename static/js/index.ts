@@ -1,10 +1,10 @@
 const { default: Login } = require("../../src/pages/Login/Login");
 const { default: Registration } = require("../../src/pages/Registration/Registration");
-const { default: Error } = require("../../src/pages/Error/Error");
+const { default: ErrorComponent } = require("../../src/pages/Error/Error");
 const { LOGIN_LINK, REG_LINK, CHAT_LINK, SERVER_LINK, EDIT_PROFILE } = require("../../utils/links");
 const { default: Edit } = require("../../src/pages/Edit/Edit");
 
-const root = document.getElementById('root')
+const root = document.getElementById('root')!
 
 switch(window.location.pathname){
     case '/':
@@ -26,10 +26,10 @@ switch(window.location.pathname){
         break;
     }
     case SERVER_LINK : {
-        root.innerHTML = Error({number: '500', text: 'Мы уже фиксим'});
+        root.innerHTML = ErrorComponent({number: '500', text: 'Мы уже фиксим'});
         break;
     }
     default: {
-        root.innerHTML = Error({number: '404', text: 'Не туда попали'})
+        root.innerHTML = ErrorComponent({number: '404', text: 'Не туда попали'})
     }
 }

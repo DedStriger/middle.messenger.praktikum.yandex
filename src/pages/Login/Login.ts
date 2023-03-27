@@ -1,7 +1,7 @@
 import CardPage from "../../components/CardPage/CardPage";
-import tmp from './Login.tmp.js';
+import tmp from './Login.tmp';
 import './Login.scss';
-import Handlebars from 'handlebars'
+import * as Handlebars from 'handlebars'
 import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import { REG_LINK } from "../../../utils/links";

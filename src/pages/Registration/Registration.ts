@@ -1,6 +1,6 @@
 import CardPage from "../../components/CardPage/CardPage";
-import Handlebars from 'handlebars';
-import tmp from './Registration.tmp.js'
+import * as Handlebars from 'handlebars';
+import tmp from './Registration.tmp'
 import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import { LOGIN_LINK } from "../../../utils/links";
