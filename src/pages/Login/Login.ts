@@ -7,25 +7,36 @@ import Button from "../../components/Button/Button";
 import { REG_LINK } from "../../../utils/links";
 
 export default function Login(){
-    return CardPage({
+    const name = new input({
+        label: 'Логин',
+        name: 'login',
+        id: 'loginName',
+    })
+
+    const password = new input({
+        label: 'Пароль',
+        name: 'password',
+        type: 'password',
+        id: 'loginPass',
+    })
+
+    const btn = new Button({
+        text: 'Войти',
+        sublink: {
+            text: 'Нет аккаунта?',
+            link: REG_LINK
+        },
+        id: 'loginButton'
+    })
+
+    const loginPage = new CardPage({
         title: 'Вход',
         content: Handlebars.compile(tmp)({
-            name: input({
-                label: 'Логин',
-                name: 'login'
-            }),
-            password: input({
-                label: 'Пароль',
-                name: 'password',
-                type: 'password'
-            }),
-            button: Button({
-                text: 'Войти',
-                sublink: {
-                    text: 'Нет аккаунта?',
-                    link: REG_LINK
-                }
-            })
-        })
+            name: name.getFirstRender(),
+            password: password.getFirstRender(),
+            button: btn.getFirstRender()
+        }),
+        id: 'loginPage'
     })
+    return loginPage.getFirstRender()
 }

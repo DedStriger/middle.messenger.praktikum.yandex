@@ -1,6 +1,7 @@
 import * as Handlebars from 'handlebars';
 import tmp from './Button.tmp';
 import './Button.scss'
+import Block from '../../../core/Block';
 
 type Sublink = {
     text: string;
@@ -12,8 +13,16 @@ export type ButtonProps = {
     text: string;
     click?: string;
     sublink?: Sublink;
+    id: string;
 }
 
-export default function Button(props: ButtonProps){
-    return Handlebars.compile(tmp)(props)
+
+export default class Button extends Block<ButtonProps>{
+    constructor(props: ButtonProps){
+        super('div', props.id, props)
+    }
+
+    render(): string {
+        return Handlebars.compile(tmp)(this.props)  
+    }
 }

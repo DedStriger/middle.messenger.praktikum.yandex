@@ -26,10 +26,10 @@ switch(window.location.pathname){
         break;
     }
     case SERVER_LINK : {
-        root.innerHTML = ErrorComponent({number: '500', text: 'Мы уже фиксим'});
+        root.innerHTML = new ErrorComponent({number: '500', text: 'Мы уже фиксим'}).getFirstRender();
         break;
     }
     default: {
-        root.innerHTML = ErrorComponent({number: '404', text: 'Не туда попали'})
+        root.innerHTML = new ErrorComponent({number: '404', text: 'Не туда попали'}).getFirstRender()
     }
 }
