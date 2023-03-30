@@ -1,5 +1,5 @@
 export default `
-    <form>
+    <form onsubmit="{{submit}}">
     {{{mail}}}
     {{{login}}}
     {{{name}}}

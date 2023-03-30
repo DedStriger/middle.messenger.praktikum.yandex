@@ -21,4 +21,12 @@
     font-size: 13px;
     line-height: 13px;
     color: var(--text);
+    transition: all .3s;
+
+    &.error{
+        color: var(--red);
+        text-align: left;
+        border-bottom-color: var(--red);
+    }
 }
+

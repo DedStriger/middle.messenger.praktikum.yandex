@@ -1,13 +1,10 @@
 import EventBus from "./EventBus";
-import * as Handlebars from 'handlebars'
 
 type Meta<T> = {
     tagName: string;
     id: string;
     props: T | object
 } | null
-
-type Children = Record<string, Block<any>>
 
 export default class Block<T> {
     
@@ -64,7 +61,7 @@ export default class Block<T> {
   
     componentDidMount() {}
   
-    dispatchComponentDidMoun() {
+    dispatchComponentDidMount() {
       this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
   
@@ -91,10 +88,11 @@ export default class Block<T> {
       if(!!elem){
         elem.innerHTML = ''
         elem.innerHTML = block
+        this._element = elem
       }else{
         this._element!.innerHTML = block;
       }
-      
+      this._componentDidMount()
     }
 
     render(): string {

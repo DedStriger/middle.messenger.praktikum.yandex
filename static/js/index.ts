@@ -4,8 +4,7 @@ const { default: ErrorComponent } = require("../../src/pages/Error/Error");
 const { LOGIN_LINK, REG_LINK, CHAT_LINK, SERVER_LINK, EDIT_PROFILE } = require("../../utils/links");
 const { default: Edit } = require("../../src/pages/Edit/Edit");
 
-const root = document.getElementById('root')!
-
+const root = document.getElementById('root')!;
 switch(window.location.pathname){
     case '/':
     case LOGIN_LINK + '/':

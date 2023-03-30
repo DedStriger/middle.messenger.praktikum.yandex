@@ -24,6 +24,10 @@
         font-size: 13px;
         line-height: 13px;
         color: var(--text-gray);
+
+        &.error{
+            text-align: right;
+        }
     }
 
     > * {
