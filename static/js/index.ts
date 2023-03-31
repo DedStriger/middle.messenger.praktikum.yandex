@@ -1,3 +1,8 @@
+import ChatItem from "../../src/components/ChatItem/ChatItem";
+import Search from "../../src/components/Search/Search";
+import Chat from "../../src/pages/Chat/Chat";
+import { mockChats } from "../../utils/mockChats";
+
 const { default: Login } = require("../../src/pages/Login/Login");
 const { default: Registration } = require("../../src/pages/Registration/Registration");
 const { default: ErrorComponent } = require("../../src/pages/Error/Error");
@@ -21,7 +26,10 @@ switch(window.location.pathname){
         break;
     }
     case CHAT_LINK : {
-        root.innerHTML = '<b>Chat</b>';
+        root.innerHTML = new Chat({
+            search: new Search().getFirstRender(),
+            chats: mockChats.map(chat => new ChatItem(chat).getFirstRender()).join(''),
+        }).getFirstRender()
         break;
     }
     case SERVER_LINK : {

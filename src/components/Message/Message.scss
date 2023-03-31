@@ -1,0 +1,96 @@
+.message{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    &__header{
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-gray);
+        .avatar{
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+
+        &-name{
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 13px;
+            color: var(--text);
+        }
+
+        &-dots{
+            display: flex;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 3px;
+            margin-left: auto;
+
+            span{
+                display: block;
+                width: 3px;
+                height: 3px;
+                border-radius: 3px;
+                background: var(--text);
+            }
+        }
+    }
+
+    &__body{
+        flex-grow: 1;
+    }
+
+    &__form{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid var(--border-gray);
+
+        &-file{
+            label{
+                display: block;
+                cursor: pointer;
+            }
+            input{
+                display: none;
+            }
+        }
+
+        &-mess{
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            background: var(--accent);
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 12px;
+            color: var(--text);
+            border: none;
+            outline: none;
+
+            &::placeholder{
+                color: var(--text-gray);
+            }
+        }
+
+        &-btn{
+            cursor: pointer;
+            border: none;
+            outline: none;
+            display: block;
+            width: 28px;
+            height: 28px;
+            background: transparent;
+            img{
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
