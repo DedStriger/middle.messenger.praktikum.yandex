@@ -29,8 +29,8 @@ export default class input extends Block<InputProps> {
             elem.nextElementSibling!.innerHTML = ''
         }
         windowsEvents[this._meta?.id! + 'blur'] = (elem: HTMLInputElement) => {
-
-            if(!validation[`${this.props.validation}`](elem.value)){
+            
+            if(!validation[this.props.validation](elem.value)){
                 elem.classList.add('error')
                 elem.nextElementSibling!.innerHTML = validation.text
             }
