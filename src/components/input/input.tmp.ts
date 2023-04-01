@@ -9,4 +9,5 @@ export default `
         onblur="{{onblur}}"
         name="{{name}}" 
         id="{{name}}">
+    <span class='error-info'></span>
 `

@@ -23,12 +23,16 @@ export default class input extends Block<InputProps> {
     }
 
     componentDidMount(): void {
-        windowsEvents[this._meta?.id! + 'focus'] = (elem: HTMLInputElement) => {elem.classList.remove('error')}
+        const validation = new Validation();
+        windowsEvents[this._meta?.id! + 'focus'] = (elem: HTMLInputElement) => {
+            elem.classList.remove('error')
+            elem.nextElementSibling!.innerHTML = ''
+        }
         windowsEvents[this._meta?.id! + 'blur'] = (elem: HTMLInputElement) => {
-            const validation = new Validation();
 
-            if(!validation[this.props.validation](elem.value)){
+            if(!validation[`${this.props.validation}`](elem.value)){
                 elem.classList.add('error')
+                elem.nextElementSibling!.innerHTML = validation.text
             }
         }
     }
