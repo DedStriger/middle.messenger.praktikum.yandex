@@ -9,6 +9,7 @@
         align-items: center;
         padding-bottom: 10px;
         border-bottom: 1px solid var(--border-gray);
+
         .avatar{
             width: 34px;
             height: 34px;
@@ -57,9 +58,7 @@
                 display: block;
                 cursor: pointer;
             }
-            input{
-                display: none;
-            }
+            input{display: none;}
         }
 
         &-mess{
@@ -88,6 +87,7 @@
             width: 28px;
             height: 28px;
             background: transparent;
+
             img{
                 transform: rotate(180deg);
             }

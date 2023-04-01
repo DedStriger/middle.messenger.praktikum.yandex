@@ -40,6 +40,7 @@
     &__info{
         display: flex;
         flex-direction: column;
+
         &-time{
             font-weight: 500;
             font-size: 9px;
@@ -52,7 +53,6 @@
 
         &-number{
             margin-left: auto;
-            display: block;
             width: 20px;
             height: 20px;
             margin-top: 14px;
