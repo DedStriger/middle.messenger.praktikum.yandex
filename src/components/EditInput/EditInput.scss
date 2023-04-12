@@ -1,4 +1,4 @@
-.edit-input{
+.edit-input div{
     display: flex;
     gap :10px;
     align-items: center;
@@ -24,6 +24,14 @@
         font-size: 13px;
         line-height: 13px;
         color: var(--text-gray);
+
+        &.error{
+            text-align: right;
+        }
+    }
+
+    .error-info{
+        display: none;
     }
 
     > * {

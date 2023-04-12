@@ -3,7 +3,7 @@ export default `
         {{{back}}}
         <div class='content'>
         {{{avatar}}}
-            <form>
+            <form onsubmit="{{submit}}">
                 {{{email}}}
                 {{{login}}}
                 {{{name}}}

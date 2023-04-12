@@ -15,10 +15,27 @@
     outline: none;
     border: none;
     border-bottom: 1px solid var(--blue);
-    margin-bottom: 30px;
     padding-bottom: 7px;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     color: var(--text);
+    transition: all .3s;
+
+    &.error{
+        color: var(--red);
+        text-align: left;
+        border-bottom-color: var(--red);
+    }
 }
+
+.error-info{
+    color: var(--red);
+    text-align: left;
+    display: block;
+    margin-top: 5px;
+    min-height: 13px;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+

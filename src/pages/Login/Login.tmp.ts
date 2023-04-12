@@ -1,5 +1,5 @@
 export default `
-    <form class='signin-form'>
+    <form class='signin-form' onSubmit="{{submit}}">
         <div class='signin-form__inputs'>
             {{{name}}}
             {{{password}}}

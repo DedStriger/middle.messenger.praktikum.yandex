@@ -8,7 +8,9 @@
 **Запуск наблюдателя** `npm run watch`  
 **Запуск сервера** `npm run start`
 **Запуск сборки** `npm run build`
-
+**Запуск линтера** `npm run lint`
+**Запуск линтера стилей** `npm run stylelint`
+ 
 ## Домен Netlify
 
 [перейти на сайт](https://vermillion-salamander-d11e9b.netlify.app)
