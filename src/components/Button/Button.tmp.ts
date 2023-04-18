@@ -1,5 +1,5 @@
 export default `
-    <button class='btn {{click}}' {{#if style}}style='{{style}}'{{/if}}>
+    <button class='btn {{click}}' {{#if onClick}}onclick='{{onClick}}'{{/if}} {{#if style}}style='{{style}}'{{/if}}>
      {{text}}
     </button>
     {{#if sublink}}

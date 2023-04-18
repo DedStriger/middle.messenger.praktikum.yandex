@@ -12,6 +12,7 @@ export type ButtonProps = {
     style?: string;
     text: string;
     click?: string;
+    onClick?: string;
     sublink?: Sublink;
     id: string;
 }

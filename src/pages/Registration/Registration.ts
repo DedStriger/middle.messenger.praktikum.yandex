@@ -1,15 +1,41 @@
-import CardPage from "../../components/CardPage/CardPage";
 import * as Handlebars from 'handlebars';
 import tmp from './Registration.tmp'
 import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
-import { LOGIN_LINK } from "../../../utils/links";
+import { CHAT_LINK, LOGIN_LINK } from "../../../utils/links";
 import { windowsEvents } from "../../../utils/windowsEvents";
-import { submitForm } from "../../../utils/submitForm";
+import HTTPTransport from '../../../core/HTTPTransport';
+import { apiUrl } from '../../../utils/apiUrl';
+import { ResponseApi } from '../../../utils/respType';
 
 export default function Registration(){
 
-     windowsEvents['regFormSubmit'] = submitForm
+     windowsEvents['regFormSubmit'] = (e: Event) => {
+        e.preventDefault()
+        const form = e.target as HTMLFormElement
+        if(form.querySelector('input.error')){
+            return;
+        }
+        const formData = new FormData(form);
+        new HTTPTransport().post(`${apiUrl}auth/signup`, {
+            data: {
+                first_name: formData.get('first_name') as string,
+                second_name: formData.get('second_name') as string,
+                login: formData.get('login') as string,
+                email: formData.get('email') as string,
+                phone: formData.get('phone') as string,
+                password: formData.get('password') as string
+            },
+        }).then((d: ResponseApi) => {
+            const data = JSON.parse(d?.response)
+            if(data.id){
+                localStorage.setItem('auth', data.id)
+                window.location.href = CHAT_LINK
+            }else{
+                alert(data.reason)
+            }
+        })
+     }
 
     const email = new input({
                 label: 'Почта',
@@ -70,7 +96,8 @@ export default function Registration(){
         },
         id: 'regBtn',
     })
-    const regPage = new CardPage({
+
+    return ({
         id: 'regPage',
         title: 'Регистрация',
         content: Handlebars.compile(tmp)({
@@ -85,6 +112,4 @@ export default function Registration(){
             submit: `window.events.regFormSubmit(event)`
         })
     })
-
-    return regPage.getFirstRender()
 }

@@ -5,11 +5,16 @@ import './Chat.scss'
 import { windowsEvents } from "../../../utils/windowsEvents";
 import Message from "../../components/Message/Message";
 import Avatar from "../../components/Avatar/Avatar";
-
+import HTTPTransport from "../../../core/HTTPTransport";
+import { apiUrl } from "../../../utils/apiUrl";
+import { ChatResponse, ResponseApi } from "../../../utils/respType";
+import ChatItem from "../../components/ChatItem/ChatItem";
 export type ChatProps = {
     search: string;
     chats: string;
     message?: string;
+    getChats?: boolean;
+    button: string;
 }
 
 export default class Chat extends Block<ChatProps>{
@@ -28,9 +33,45 @@ export default class Chat extends Block<ChatProps>{
                 }).getFirstRender()
             })
         }
+
+        const getChats = () => {
+            new HTTPTransport().get(`${apiUrl}chats`)
+            .then((d: ResponseApi) => {
+                const data = JSON.parse(d.response)
+                if(d.status === 200){
+                    this.setProps({
+                        getChats: true,
+                        chats: data.map((m: ChatResponse) => new ChatItem({
+                            id: m.id,
+                            avatar: m.avatar,
+                            name: m.title,
+                            lastMessage: m.last_message?.content || '',
+                            wasOnline: m.last_message && new Date(m.last_message.time).toLocaleDateString(),
+                            unreadMessage: m.unread_count
+                        }).getFirstRender()).join('')
+                    })
+                }else{
+                    alert(data.reason)
+                }
+            })
+        }
+
+        windowsEvents['createChat'] = () => {
+            new HTTPTransport().post(`${apiUrl}chats`, {data: {title: 'new chat'}})
+            .then((d: ResponseApi) => {
+                if(d.status === 200){
+                    getChats()
+                }else{
+                    alert(JSON.parse(d.response).reason)
+                }
+            })
+        }
+
+       !this.props.getChats && getChats()
     }
 
     render(): string {
         return Handlebars.compile(tmp)(this.props)  
     }
 }
+
