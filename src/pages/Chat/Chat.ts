@@ -17,17 +17,21 @@ export type ChatProps = {
     button: string;
 }
 
+const HTTP = new HTTPTransport()
+
 export default class Chat extends Block<ChatProps>{
     constructor(props: ChatProps){
         super('div', 'chat', props)
     }
 
     componentDidMount(): void {
+
         windowsEvents['chatClick'] = (elem: HTMLDivElement) => {
             const {id, src, name} = elem.dataset
             this.setProps({
                 message: new Message({
                     id: 'message_'+id,
+                    chatId: id + '',
                     avatar: new Avatar({id: 'message_avatar_'+id, src}).getFirstRender(),
                     name: name || ''
                 }).getFirstRender()
@@ -35,11 +39,12 @@ export default class Chat extends Block<ChatProps>{
         }
 
         const getChats = () => {
-            new HTTPTransport().get(`${apiUrl}chats`)
+            HTTP.get(`${apiUrl}chats`)
             .then((d: ResponseApi) => {
                 const data = JSON.parse(d.response)
                 if(d.status === 200){
                     this.setProps({
+                        message: null,
                         getChats: true,
                         chats: data.map((m: ChatResponse) => new ChatItem({
                             id: m.id,
@@ -56,8 +61,22 @@ export default class Chat extends Block<ChatProps>{
             })
         }
 
+        windowsEvents['removeChat'] = (id: string) => {
+            HTTP.delete(`${apiUrl}chats`, {
+                data: {
+                    chatId: id
+                }
+            }).then((d: ResponseApi) => {
+                if(d.status === 200){
+                    getChats()
+                }else{
+                    alert(JSON.parse(d.response).reason)
+                }
+            })
+        }
+
         windowsEvents['createChat'] = () => {
-            new HTTPTransport().post(`${apiUrl}chats`, {data: {title: 'new chat'}})
+            HTTP.post(`${apiUrl}chats`, {data: {title: 'new chat'}})
             .then((d: ResponseApi) => {
                 if(d.status === 200){
                     getChats()

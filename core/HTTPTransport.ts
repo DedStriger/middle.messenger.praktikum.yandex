@@ -12,7 +12,7 @@ enum METHODS  {
   }
 
   type Options = {
-    data: Record<string, string> | FormData;
+    data: Record<string, string | number | string[] | number[]> | FormData;
     isFormData?: boolean;
     timeout?: number;
     headers?: {value: string, name: string}[];

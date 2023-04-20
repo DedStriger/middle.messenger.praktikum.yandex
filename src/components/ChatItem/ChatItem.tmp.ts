@@ -1,7 +1,7 @@
 export default `
 <div 
     class="chat-item" 
-    data-id="chat-{{id}}" 
+    data-id="{{id}}" 
     data-name="{{name}}"
     data-src="{{src}}"
     onclick='window.events.chatClick(this)'
