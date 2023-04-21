@@ -7,8 +7,10 @@ import { CHAT_LINK, REG_LINK } from "../../../utils/links";
 import { windowsEvents } from "../../../utils/windowsEvents";
 import HTTPTransport from '../../../core/HTTPTransport';
 import { apiUrl } from '../../../utils/apiUrl';
+import { router } from '../../../static/js';
 
 export default function Login(){
+  
     windowsEvents['loginFormSubmit'] = (e: Event) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement
@@ -24,12 +26,13 @@ export default function Login(){
             timeout: 3600
         }).then((d: any) => {
             if(d.response === 'OK'){
-                window.location.href = CHAT_LINK
                 localStorage.setItem('auth', 'true')
+                router.go(CHAT_LINK)
             }else{
                 alert(JSON.parse(d.response).reason)
             }
         })
+        .catch((e: unknown) => alert(e))
     }
     const name = new input({
         label: 'Логин',

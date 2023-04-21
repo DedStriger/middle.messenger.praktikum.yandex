@@ -7,6 +7,7 @@ import { windowsEvents } from "../../../utils/windowsEvents";
 import HTTPTransport from '../../../core/HTTPTransport';
 import { apiUrl } from '../../../utils/apiUrl';
 import { ResponseApi } from '../../../utils/respType';
+import { router } from '../../../static/js';
 
 export default function Registration(){
 
@@ -30,11 +31,12 @@ export default function Registration(){
             const data = JSON.parse(d?.response)
             if(data.id){
                 localStorage.setItem('auth', data.id)
-                window.location.href = CHAT_LINK
+                router.go(CHAT_LINK)
             }else{
                 alert(data.reason)
             }
         })
+        .catch((e: unknown) => alert(e))
      }
 
     const email = new input({

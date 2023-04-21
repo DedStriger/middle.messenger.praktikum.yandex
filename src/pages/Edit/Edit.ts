@@ -11,6 +11,7 @@ import HTTPTransport from '../../../core/HTTPTransport';
 import { apiUrl } from '../../../utils/apiUrl';
 import { ResponseApi } from '../../../utils/respType';
 import { LOGIN_LINK } from '../../../utils/links';
+import { router } from '../../../static/js';
     const HTTP = new HTTPTransport()
 
     windowsEvents['editFormSubmit'] = async (e: Event) => {
@@ -32,11 +33,10 @@ import { LOGIN_LINK } from '../../../utils/links';
         })
         .then((d: ResponseApi) => {
             if(d.status !== 200){
-                console.log(d)
                 alert(JSON.parse(d.response).reason)
             }
         })
-        if(!!formData.get('avatar')){
+        if(!!(formData.get('avatar') as File).name){
               
             await HTTP.put(`${apiUrl}user/profile/avatar`, {
                 data: formData,
@@ -85,7 +85,7 @@ import { LOGIN_LINK } from '../../../utils/links';
         .then((d: ResponseApi) => {
             if(d.status === 200){
                 localStorage.removeItem('auth')
-                window.location.href = LOGIN_LINK
+                router.go(LOGIN_LINK)
             }else{
                 alert(JSON.parse(d.response).reason)
             }
@@ -161,7 +161,8 @@ import { LOGIN_LINK } from '../../../utils/links';
         text: 'Выйти',
         onClick: 'window.events.editLogout()',
         style: 'margin-top: 15px; background: var(--red);',
-        id: 'editLogoutBtn'
+        id: 'editLogoutBtn',
+        type: 'button',
     })
     export const editProps = {
         back: back.getFirstRender(),
@@ -204,6 +205,7 @@ export default class Edit extends Block<EditProps>{
         .then((d: ResponseApi) => {
             const data = JSON.parse(d.response)
             if(d.status === 200){
+                localStorage.setItem('auth', 'true')
                 Object.keys(data).forEach(i => {
                     const find = document.getElementById(i) as HTMLInputElement | null
                     if(!!find){
@@ -213,7 +215,7 @@ export default class Edit extends Block<EditProps>{
             }else{
                 alert(data.reason)
             }
-        })
+        }).catch((e: unknown) => alert(e))
     }
 
     render(): string {

@@ -1,8 +1,10 @@
 import Block from '../../../core/Block';
 import HTTPTransport from '../../../core/HTTPTransport';
 import Validation from '../../../core/Validation';
+import { router } from '../../../static/js';
 import { apiUrl } from '../../../utils/apiUrl';
 import { initWS } from '../../../utils/initWS';
+import { LOGIN_LINK } from '../../../utils/links';
 import { ResponseApi } from '../../../utils/respType';
 import { User } from '../../../utils/userType';
 import { windowsEvents } from '../../../utils/windowsEvents';
@@ -95,6 +97,7 @@ export default class Message extends Block<MessageProps> {
                     users: JSON.parse(d.response) as User[]
                 })
             })
+            .catch((e: unknown) => alert(e))
         }
 
         !this.props.isGetUser && getUsers()

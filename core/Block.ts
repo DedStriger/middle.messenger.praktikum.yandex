@@ -134,7 +134,10 @@ export default class Block<T> {
     }
   
     show() {
-      this.getContent().style.display = "block";
+      const e = document.getElementById(this._meta?.id!)
+      if(e){
+        e.style.display = "block"
+      }
     }
   
     hide() {

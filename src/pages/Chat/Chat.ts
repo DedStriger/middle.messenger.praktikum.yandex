@@ -9,6 +9,8 @@ import HTTPTransport from "../../../core/HTTPTransport";
 import { apiUrl } from "../../../utils/apiUrl";
 import { ChatResponse, ResponseApi } from "../../../utils/respType";
 import ChatItem from "../../components/ChatItem/ChatItem";
+import { EDIT_PROFILE, LOGIN_LINK } from "../../../utils/links";
+import { router } from "../../../static/js";
 export type ChatProps = {
     search: string;
     chats: string;
@@ -22,10 +24,14 @@ const HTTP = new HTTPTransport()
 export default class Chat extends Block<ChatProps>{
     constructor(props: ChatProps){
         super('div', 'chat', props)
+        if(!localStorage.getItem('auth')){
+            console.log('here')
+            window.location.href = LOGIN_LINK
+        }
     }
 
     componentDidMount(): void {
-
+        windowsEvents['goEdit'] = () => {router.go(EDIT_PROFILE)}
         windowsEvents['chatClick'] = (elem: HTMLDivElement) => {
             const {id, src, name} = elem.dataset
             this.setProps({
@@ -59,6 +65,7 @@ export default class Chat extends Block<ChatProps>{
                     alert(data.reason)
                 }
             })
+            .catch((e: unknown) => alert(e))
         }
 
         windowsEvents['removeChat'] = (id: string) => {
@@ -73,6 +80,7 @@ export default class Chat extends Block<ChatProps>{
                     alert(JSON.parse(d.response).reason)
                 }
             })
+            .catch((e: unknown) => alert(e))
         }
 
         windowsEvents['createChat'] = () => {
@@ -84,6 +92,7 @@ export default class Chat extends Block<ChatProps>{
                     alert(JSON.parse(d.response).reason)
                 }
             })
+            .catch((e: unknown) => alert(e))
         }
 
        !this.props.getChats && getChats()

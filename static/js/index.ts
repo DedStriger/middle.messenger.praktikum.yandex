@@ -12,7 +12,7 @@ const { default: ErrorComponent } = require("../../src/pages/Error/Error");
 const { REG_LINK, CHAT_LINK, SERVER_LINK, EDIT_PROFILE } = require("../../utils/links");
 const { default: Edit } = require("../../src/pages/Edit/Edit");
 
-const router = new Router('#root');
+export const router = new Router('#root');
 
 router
 .use<typeof Chat>(CHAT_LINK, Chat, {
