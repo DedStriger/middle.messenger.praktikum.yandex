@@ -1,14 +1,16 @@
+import { EDIT_PROFILE } from '../../../utils/links'
 import arrow from '../../assets/sm-arrow.svg'
 
 export default `
 <div class='chat-container'>
     <div class="sidebar">
-        <a href="/edit" class='sidebar__link'>
+        <a href="${EDIT_PROFILE}" class='sidebar__link'>
             <span>Профиль</span>
             <img src="${arrow}" alt="arrow">
         </a>
         {{{search}}}
         <div class='sidebar__list'>
+            {{{button}}}
             {{{chats}}}
         </div>
     </div>

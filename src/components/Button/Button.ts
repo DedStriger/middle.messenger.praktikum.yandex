@@ -12,6 +12,8 @@ export type ButtonProps = {
     style?: string;
     text: string;
     click?: string;
+    type?: 'button' | 'submit',
+    onClick?: string;
     sublink?: Sublink;
     id: string;
 }

@@ -27,6 +27,7 @@ export default class Block<T> {
         tagName,
         props
       };
+
       this.props = this._makePropsProxy(props);
   
       this.eventBus = () => eventBus;
@@ -35,7 +36,7 @@ export default class Block<T> {
       eventBus.emit(Block.EVENTS.INIT);
     }
   
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus: EventBus) {
       eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
       eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
       eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -70,7 +71,7 @@ export default class Block<T> {
     }
   
   
-    setProps = (nextProps) => {
+    setProps = (nextProps: unknown) => {
       if (!nextProps) {
         return;
       }
@@ -95,7 +96,7 @@ export default class Block<T> {
       this._componentDidMount()
     }
 
-    render(): string {
+    render(): string{
         return ''
     }
   
@@ -104,7 +105,7 @@ export default class Block<T> {
     }
 
   
-    _makePropsProxy(props) {
+    _makePropsProxy(props: any) {
       const self = this;
       return new Proxy(props, {
         get(target: any, prop: string) {
@@ -133,7 +134,10 @@ export default class Block<T> {
     }
   
     show() {
-      this.getContent().style.display = "block";
+      const e = document.getElementById(this._meta?.id!)
+      if(e){
+        e.style.display = "block"
+      }
     }
   
     hide() {

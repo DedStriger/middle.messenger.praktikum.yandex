@@ -4,13 +4,14 @@ import tmp from './Error.tmp'
 import * as Handlebars from 'handlebars';
 
 export type ErrorComponentProps = {
-    number: string;
+    id?: string;
+    number?: string;
     text: string;
 }
 
 export default class ErrorComponent extends Block<ErrorComponentProps>{
     constructor(props: ErrorComponentProps){
-        super('div', props.number, props)
+        super('div', props.number || props.id!, props)
     }
 
     render(): string {

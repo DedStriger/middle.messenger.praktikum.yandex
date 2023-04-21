@@ -1,15 +1,38 @@
-import CardPage from "../../components/CardPage/CardPage";
 import tmp from './Login.tmp';
 import './Login.scss';
 import * as Handlebars from 'handlebars'
 import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
-import { REG_LINK } from "../../../utils/links";
+import { CHAT_LINK, REG_LINK } from "../../../utils/links";
 import { windowsEvents } from "../../../utils/windowsEvents";
-import { submitForm } from "../../../utils/submitForm";
+import { apiUrl } from '../../../utils/apiUrl';
+import { HTTP, router } from '../../../static/js';
 
 export default function Login(){
-    windowsEvents['loginFormSubmit'] = submitForm
+  
+    windowsEvents['loginFormSubmit'] = (e: Event) => {
+        e.preventDefault()
+        const form = e.target as HTMLFormElement
+        if(form.querySelector('input.error')){
+            return;
+        }
+        const formData = new FormData(form);
+       HTTP.post(`${apiUrl}auth/signin`, {
+            data: {
+                login: formData.get('login') as string,
+                password: formData.get('password') as string,
+            },
+            timeout: 3600
+        }).then((d: any) => {
+            if(d.response === 'OK'){
+                localStorage.setItem('auth', 'true')
+                router.go(CHAT_LINK)
+            }else{
+                alert(JSON.parse(d.response).reason)
+            }
+        })
+        .catch((e: unknown) => alert(e))
+    }
     const name = new input({
         label: 'Логин',
         name: 'login',
@@ -33,8 +56,7 @@ export default function Login(){
         },
         id: 'loginButton'
     })
-
-    const loginPage = new CardPage({
+    return ({
         title: 'Вход',
         content: Handlebars.compile(tmp)({
             name: name.getFirstRender(),
@@ -44,5 +66,4 @@ export default function Login(){
         }),
         id: 'loginPage'
     })
-    return loginPage.getFirstRender()
 }

@@ -7,8 +7,21 @@
     &__header{
         display: flex;
         align-items: center;
+        position: relative;
         padding-bottom: 10px;
         border-bottom: 1px solid var(--border-gray);
+
+        &-users{
+            display: flex;
+            margin: 0 10px;
+            align-items: center;
+            flex-wrap: wrap;
+
+            span{
+                font-size: 12px;
+                color: var(--text-gray);
+            }
+        }
 
         .avatar{
             width: 34px;
@@ -28,6 +41,7 @@
             display: flex;
             cursor: pointer;
             flex-direction: column;
+            padding: 0 20px;
             gap: 3px;
             margin-left: auto;
 
@@ -39,10 +53,71 @@
                 background: var(--text);
             }
         }
+
+        &-menu{
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s;
+
+            &.active{
+                opacity: 1;
+                visibility: visible;
+            }
+
+            background-color: var(--white);
+            border: 1px solid var(--border-gray);
+            padding: 10px;
+            border-radius: 6px;
+
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                height: 40px;
+                color: var(--white);
+                background: var(--blue);
+                margin-top: 10px;
+                width: 100%;
+                border: none;
+                outline: none;
+                padding: 12px;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 13px;
+
+                &.red{
+                    background: var(--red);
+                }
+            }
+        }
     }
 
     &__body{
         flex-grow: 1;
+        padding-top: 20px;
+        overflow: auto;
+
+        &-message{
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            background: var(--border-gray);
+            width: max-content;
+
+            span{
+                font-size: 12px;
+                color: var(--text-gray);
+                margin-bottom: 5px;
+            }
+
+            p{
+                font-size: 14px;
+            }
+        }
     }
 
     &__form{
@@ -92,5 +167,22 @@
                 transform: rotate(180deg);
             }
         }
+    }
+}
+
+.mhm{
+    &__title{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    &__input{
+        border-radius: 6px;
+        border: 1px solid var(--border-gray);
+        padding: 10px;
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        outline: none;
     }
 }
