@@ -1,14 +1,13 @@
-import HTTPTransport from "../core/HTTPTransport";
 import { MessageProps } from "../src/components/Message/Message";
+import { HTTP } from "../static/js";
 import { apiUrl } from "./apiUrl";
 import { ResponseApi } from "./respType";
 import { windowsEvents } from "./windowsEvents";
 
-export const initWS = async (chatId: string | number, setProps: (props: Partial<MessageProps>) => void,) => {
+export const initWS = async (chatId: string | number, setProps: (props: Partial<MessageProps>) => void, props: MessageProps) => {
 
     let userID: string = '',
-      token: string = '',
-      HTTP = new HTTPTransport();
+      token: string = '';
 
       await HTTP.get(`${apiUrl}auth/user`)
       .then((d: ResponseApi) => {
@@ -29,7 +28,6 @@ export const initWS = async (chatId: string | number, setProps: (props: Partial<
             alert(data.reason)
         }
       })
-
       const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userID}/${chatId}/${token}`);
       socket.addEventListener('open', () => {
         console.log('Соединение установлено');
@@ -37,9 +35,9 @@ export const initWS = async (chatId: string | number, setProps: (props: Partial<
             socket
         })
         socket.send(JSON.stringify({
-          content: 'Моё первое сообщение миру!',
-          type: 'message',
-        }));
+          content: '0',
+          type: 'get old',
+        }))
       });
       
       socket.addEventListener('close', event => {
@@ -53,10 +51,16 @@ export const initWS = async (chatId: string | number, setProps: (props: Partial<
       });
       
       socket.addEventListener('message', event => {
-        windowsEvents['newMessage']({
-            id: JSON.parse(event.data).user_id,
-            content:  JSON.parse(event.data).content
-      })
+          const data = JSON.parse(event.data)
+
+          if(Array.isArray(data)){
+            windowsEvents['getOldMessage'](data.map((d: {user_id: string, content: string}) => ({id: d.user_id, content: d.content})))
+          }else{
+                windowsEvents['newMessage']({
+                    id: JSON.parse(event.data).user_id,
+                    content:  JSON.parse(event.data).content
+              })
+          }
       });
       
       socket.addEventListener('error', (event) => {

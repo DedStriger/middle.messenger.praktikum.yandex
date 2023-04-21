@@ -1,11 +1,10 @@
-import HTTPTransport from "../core/HTTPTransport"
-import { router } from "../static/js"
+import { HTTP, router } from "../static/js"
 import { apiUrl } from "./apiUrl"
 import { CHAT_LINK } from "./links"
 import { ResponseApi } from "./respType"
 
 export const checkUserAuth = async (cb?: () => void) => {
-    await new HTTPTransport().get(`${apiUrl}auth/user`)
+    await HTTP.get(`${apiUrl}auth/user`)
     .then((d: ResponseApi) => {
         const data = JSON.parse(d.response)
         if(d.status === 200){

@@ -1,3 +1,4 @@
+import HTTPTransport from "../../core/HTTPTransport";
 import Router from "../../core/Router";
 import Button from "../../src/components/Button/Button";
 import CardPage from "../../src/components/CardPage/CardPage";
@@ -11,7 +12,7 @@ const { default: Registration } = require("../../src/pages/Registration/Registra
 const { default: ErrorComponent } = require("../../src/pages/Error/Error");
 const { REG_LINK, CHAT_LINK, SERVER_LINK, EDIT_PROFILE } = require("../../utils/links");
 const { default: Edit } = require("../../src/pages/Edit/Edit");
-
+export const HTTP = new HTTPTransport()
 export const router = new Router('#root');
 
 router

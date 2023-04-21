@@ -5,12 +5,11 @@ import './Chat.scss'
 import { windowsEvents } from "../../../utils/windowsEvents";
 import Message from "../../components/Message/Message";
 import Avatar from "../../components/Avatar/Avatar";
-import HTTPTransport from "../../../core/HTTPTransport";
 import { apiUrl } from "../../../utils/apiUrl";
 import { ChatResponse, ResponseApi } from "../../../utils/respType";
 import ChatItem from "../../components/ChatItem/ChatItem";
 import { EDIT_PROFILE, LOGIN_LINK } from "../../../utils/links";
-import { router } from "../../../static/js";
+import { HTTP, router } from "../../../static/js";
 export type ChatProps = {
     search: string;
     chats: string;
@@ -19,7 +18,6 @@ export type ChatProps = {
     button: string;
 }
 
-const HTTP = new HTTPTransport()
 
 export default class Chat extends Block<ChatProps>{
     constructor(props: ChatProps){
@@ -54,7 +52,7 @@ export default class Chat extends Block<ChatProps>{
                         getChats: true,
                         chats: data.map((m: ChatResponse) => new ChatItem({
                             id: m.id,
-                            avatar: m.avatar,
+                            avatar: m.avatar && `https://ya-praktikum.tech/api/v2/resources/${m.avatar}`,
                             name: m.title,
                             lastMessage: m.last_message?.content || '',
                             wasOnline: m.last_message && new Date(m.last_message.time).toLocaleDateString(),
@@ -84,7 +82,12 @@ export default class Chat extends Block<ChatProps>{
         }
 
         windowsEvents['createChat'] = () => {
-            HTTP.post(`${apiUrl}chats`, {data: {title: 'new chat'}})
+            const name =prompt('Введите название нового чата');
+            if(!name){
+                alert('Невозможно создать чат без имени')
+                return;
+            }
+            HTTP.post(`${apiUrl}chats`, {data: {title: name}})
             .then((d: ResponseApi) => {
                 if(d.status === 200){
                     getChats()

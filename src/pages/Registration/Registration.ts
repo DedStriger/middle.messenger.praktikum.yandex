@@ -4,10 +4,9 @@ import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import { CHAT_LINK, LOGIN_LINK } from "../../../utils/links";
 import { windowsEvents } from "../../../utils/windowsEvents";
-import HTTPTransport from '../../../core/HTTPTransport';
 import { apiUrl } from '../../../utils/apiUrl';
 import { ResponseApi } from '../../../utils/respType';
-import { router } from '../../../static/js';
+import { HTTP, router } from '../../../static/js';
 
 export default function Registration(){
 
@@ -18,7 +17,7 @@ export default function Registration(){
             return;
         }
         const formData = new FormData(form);
-        new HTTPTransport().post(`${apiUrl}auth/signup`, {
+        HTTP.post(`${apiUrl}auth/signup`, {
             data: {
                 first_name: formData.get('first_name') as string,
                 second_name: formData.get('second_name') as string,

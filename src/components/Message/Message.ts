@@ -1,10 +1,8 @@
 import Block from '../../../core/Block';
-import HTTPTransport from '../../../core/HTTPTransport';
 import Validation from '../../../core/Validation';
-import { router } from '../../../static/js';
+import { HTTP } from '../../../static/js';
 import { apiUrl } from '../../../utils/apiUrl';
 import { initWS } from '../../../utils/initWS';
-import { LOGIN_LINK } from '../../../utils/links';
 import { ResponseApi } from '../../../utils/respType';
 import { User } from '../../../utils/userType';
 import { windowsEvents } from '../../../utils/windowsEvents';
@@ -16,6 +14,8 @@ type Mess = {
     user: string;
     mess: string;
 }
+
+type ApiMess = {id: string, content: string}
 
 export type MessageProps = {
     id: string;
@@ -29,8 +29,6 @@ export type MessageProps = {
     socket?: WebSocket;
 }
 
-const HTTP = new HTTPTransport()
-
 export default class Message extends Block<MessageProps> {
     constructor(props: MessageProps){
         super('div', props.id, {...props, messages: []})
@@ -39,7 +37,7 @@ export default class Message extends Block<MessageProps> {
     validation = new Validation();
 
     componentDidMount(): void {
-        windowsEvents['newMessage'] = (mess: {id: string, content: string}) => {
+        windowsEvents['newMessage'] = (mess: ApiMess) => {
             this.setProps({
                 messages: [{
                     user: this.props.users?.find(i => i.id === mess.id)?.display_name || '',
@@ -48,8 +46,17 @@ export default class Message extends Block<MessageProps> {
             })
         }
 
+        windowsEvents['getOldMessage'] = (data: ApiMess[]) => {
+            this.setProps({
+                messages: data.map(d => ({
+                    user: this.props.users?.find(i => i.id === d.id)?.display_name || '',
+                    mess:  d.content
+                }))
+            })
+        }
+
         if(!this.props.isOpenWS){
-            initWS(this.props.chatId, this.setProps)
+            initWS(this.props.chatId, this.setProps, this.props)
             this.setProps({
                 isOpenWS: true,
             })

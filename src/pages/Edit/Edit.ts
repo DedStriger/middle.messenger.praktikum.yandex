@@ -7,12 +7,10 @@ import { windowsEvents } from '../../../utils/windowsEvents';
 import Block from '../../../core/Block';
 import tmp from './Edit.tmp'
 import * as Handlebars from 'handlebars';
-import HTTPTransport from '../../../core/HTTPTransport';
 import { apiUrl } from '../../../utils/apiUrl';
 import { ResponseApi } from '../../../utils/respType';
 import { LOGIN_LINK } from '../../../utils/links';
-import { router } from '../../../static/js';
-    const HTTP = new HTTPTransport()
+import { HTTP, router } from '../../../static/js';
 
     windowsEvents['editFormSubmit'] = async (e: Event) => {
         e.preventDefault()

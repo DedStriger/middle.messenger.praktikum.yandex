@@ -5,9 +5,8 @@ import input from "../../components/input/input";
 import Button from "../../components/Button/Button";
 import { CHAT_LINK, REG_LINK } from "../../../utils/links";
 import { windowsEvents } from "../../../utils/windowsEvents";
-import HTTPTransport from '../../../core/HTTPTransport';
 import { apiUrl } from '../../../utils/apiUrl';
-import { router } from '../../../static/js';
+import { HTTP, router } from '../../../static/js';
 
 export default function Login(){
   
@@ -18,7 +17,7 @@ export default function Login(){
             return;
         }
         const formData = new FormData(form);
-        new HTTPTransport().post(`${apiUrl}auth/signin`, {
+       HTTP.post(`${apiUrl}auth/signin`, {
             data: {
                 login: formData.get('login') as string,
                 password: formData.get('password') as string,
