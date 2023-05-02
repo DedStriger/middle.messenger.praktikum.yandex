@@ -65,7 +65,7 @@ import { HTTP, router } from '../../../static/js';
         }
 
     }
-    windowsEvents['editAvatarLoad'] = (e: File) => { 
+    windowsEvents['editAvatarLoad'] = () => { 
         const avatar = document.querySelector('#avatar img') as HTMLImageElement | null
         const fileInput = document.getElementById('file') as HTMLInputElement
         if(!avatar || !fileInput || !fileInput.files){

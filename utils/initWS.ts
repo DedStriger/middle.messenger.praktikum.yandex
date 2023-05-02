@@ -4,7 +4,7 @@ import { apiUrl } from "./apiUrl";
 import { ResponseApi } from "./respType";
 import { windowsEvents } from "./windowsEvents";
 
-export const initWS = async (chatId: string | number, setProps: (props: Partial<MessageProps>) => void, props: MessageProps) => {
+export const initWS = async (chatId: string | number, setProps: (props: Partial<MessageProps>) => void) => {
 
     let userID: string = '',
       token: string = '';

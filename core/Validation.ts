@@ -1,5 +1,5 @@
 export default class Validation {
-    text = '';
+   text = '';
     checkForEmpty(val: string){
         if(!val){
             this.text = 'Обязательно для заполнения'

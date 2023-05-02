@@ -56,7 +56,7 @@ export default class Message extends Block<MessageProps> {
         }
 
         if(!this.props.isOpenWS){
-            initWS(this.props.chatId, this.setProps, this.props)
+            initWS(this.props.chatId, this.setProps)
             this.setProps({
                 isOpenWS: true,
             })
