@@ -10,7 +10,7 @@
 **Запуск webpack** `npm run webpack`  
 **Запуск сборки** `npm run build`  
 **Запуск линтера** `npm run lint`  
-**Запуск линтера стилей** `npm run stylelint`
+**Запуск линтера стилей** `npm run lint:style`
  
 ## Домен Netlify
 

@@ -11,7 +11,7 @@
     "build": "webpack && node ./copy.js",
     "start": "npm run build && node ./app.ts",
     "lint": "node_modules/.bin/eslint .",
-    "stylelint": "npx stylelint '**/*.scss'"
+    "lint:style": "npx stylelint '**/*.scss'"
   },
   "keywords": [],
   "author": "",
@@ -57,7 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm-run-all test lint:all"
     }
   }
 }
