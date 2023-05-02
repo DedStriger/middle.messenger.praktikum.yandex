@@ -9,7 +9,7 @@
     "webpack": "node ./node_modules/.bin/webpack ",
     "watch": "webpack serve",
     "build": "webpack && node ./copy.js",
-    "start": "npm run build && node ./app.ts",
+    "start": "webpack && node ./app.ts",
     "lint": "node_modules/.bin/eslint .",
     "lint:style": "npx stylelint '**/*.scss'"
   },
