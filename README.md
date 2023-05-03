@@ -11,8 +11,9 @@
 **Запуск сборки** `npm run build`  
 **Запуск линтера** `npm run lint`  
 **Запуск линтера стилей** `npm run lint:style`
+**Запуск автотестов** `npm run test`  
  
-## Домен Netlify
+## Домен Render.com
 
 [перейти на сайт](https://test-o43q.onrender.com)
 

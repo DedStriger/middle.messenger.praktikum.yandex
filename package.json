@@ -11,16 +11,20 @@
     "build": "webpack && node ./copy.js",
     "start": "webpack && node ./app.ts",
     "lint": "node_modules/.bin/eslint .",
-    "lint:style": "npx stylelint '**/*.scss'"
+    "lint:style": "npx stylelint '**/*.scss'",
+    "test": "./node_modules/.bin/mocha --require ignore-styles"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.7",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
+    "chai": "^4.3.7",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "cssnano": "^6.0.0",
@@ -35,7 +39,9 @@
     "handlebars-loader": "^1.7.3",
     "html-webpack-plugin": "^5.5.1",
     "husky": "^8.0.3",
+    "ignore-styles": "^5.0.1",
     "mini-css-extract-plugin": "^2.7.5",
+    "mocha": "^10.2.0",
     "node-sass": "^8.0.0",
     "parcel": "^2.0.1",
     "sass-loader": "^13.2.2",
@@ -57,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test lint:all"
+      "pre-commit": "npm-run-all test test:all"
     }
   }
 }

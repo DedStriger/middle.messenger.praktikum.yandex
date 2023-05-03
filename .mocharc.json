@@ -1,0 +1,6 @@
+{
+    "extensions": ["ts"],
+    "spec": ["**/*.spec.ts"],
+    "require": "ts-node/register",
+    "recursive": true
+  } 
