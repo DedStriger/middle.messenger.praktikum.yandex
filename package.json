@@ -6,6 +6,7 @@
     "node": ">=12"
   },
   "scripts": {
+    "precommit": "npm run test",
     "webpack": "node ./node_modules/.bin/webpack ",
     "watch": "webpack serve",
     "build": "webpack && node ./copy.js",
