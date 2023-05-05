@@ -24,10 +24,12 @@ export default class input extends Block<InputProps> {
 
     componentDidMount(): void {
         const validation = new Validation();
+        //@ts-ignore
         windowsEvents[this._meta?.id! + 'focus'] = (elem: HTMLInputElement) => {
             elem.classList.remove('error')
             elem.nextElementSibling!.innerHTML = ''
         }
+        //@ts-ignore
         windowsEvents[this._meta?.id! + 'blur'] = (elem: HTMLInputElement) => {
             //@ts-ignore
             if(!validation[this.props.validation](elem.value)){

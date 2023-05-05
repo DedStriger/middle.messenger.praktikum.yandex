@@ -1,5 +1,4 @@
 import './Edit.scss';
-import Back from '../../components/Back/Back';
 import Button from '../../components/Button/Button';
 import Avatar from '../../components/Avatar/Avatar';
 import EditInput from '../../components/EditInput/EditInput';
@@ -11,8 +10,9 @@ import { apiUrl } from '../../../utils/apiUrl';
 import { ResponseApi } from '../../../utils/respType';
 import { LOGIN_LINK } from '../../../utils/links';
 import { HTTP, router } from '../../../static/js';
+import Back from '../../components/Back/Back';
 
-    windowsEvents['editFormSubmit'] = async (e: Event) => {
+windowsEvents['editFormSubmit'] = async (e: Event) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement
         if(form.querySelector('input.error')){
@@ -65,6 +65,7 @@ import { HTTP, router } from '../../../static/js';
         }
 
     }
+
     windowsEvents['editAvatarLoad'] = () => { 
         const avatar = document.querySelector('#avatar img') as HTMLImageElement | null
         const fileInput = document.getElementById('file') as HTMLInputElement

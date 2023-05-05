@@ -21,7 +21,6 @@ export default class Back extends Block<BackProps> {
     }
 
     render(): string {
-        console.log('here', Handlebars)
         return Handlebars.compile(tmp)({})  
     }
 }

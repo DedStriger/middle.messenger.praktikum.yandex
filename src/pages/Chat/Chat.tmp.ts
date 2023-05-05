@@ -1,5 +1,5 @@
 import { EDIT_PROFILE } from '../../../utils/links'
-import arrow from '../../assets/sm-arrow.svg'
+const arrow = require('../../assets/sm-arrow.svg')
 
 export default `
 <div class='chat-container'>

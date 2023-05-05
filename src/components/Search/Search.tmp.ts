@@ -1,4 +1,4 @@
-import src from '../../assets/search.svg'
+const src = require('../../assets/search.svg')
 
 export default `
     <div class='search'>

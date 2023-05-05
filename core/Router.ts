@@ -72,7 +72,7 @@ export default class Router {
   }
 
   start() {
-      window.onpopstate = (event: PopStateEvent) => {
+    window.onpopstate = (event: PopStateEvent) => {
         const path = (event.currentTarget as Window).location.pathname
         this._checkUnexistRoute(path)
       this._onRoute(path);

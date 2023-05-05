@@ -1,4 +1,4 @@
-import src from '../../assets/arrow.svg';
+const src = require('../../assets/arrow.svg')
 
 export default `
     <button onClick='window.events.goBack()' class='back'>

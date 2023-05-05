@@ -1,5 +1,5 @@
-import arrow from '../../assets/arrow.svg';
-import clip from '../../assets/clip.svg';
+const clip = require('../../assets/clip.svg')
+const arrow = require('../../assets/arrow.svg')
 
 
 export default `
