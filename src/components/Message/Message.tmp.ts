@@ -1,7 +1,3 @@
-const clip = require('../../assets/clip.svg')
-const arrow = require('../../assets/arrow.svg')
-
-
 export default `
 <div class="message" data-chatid={{chatId}}>
     <div class="message__header">
@@ -38,13 +34,13 @@ export default `
     <form class="message__form" onsubmit='{{submit}}'>
         <div class="message__form-file">
             <label for="file">
-                <img src="${clip}" alt="clip">
+                <img src="/clip.svg" alt="clip">
             </label>
             <input type="file" name="file" id="file">
         </div>
         <input type="text" placeholder="Сообщение" name='message' id='message' class="message__form-mess">
         <button type="submit" class="message__form-btn">
-            <img src="${arrow}" alt="arrow">
+            <img src="/arrow.svg" alt="arrow">
         </button>
     </form>
 </div>
