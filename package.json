@@ -15,7 +15,7 @@
     "start": "webpack && node ./app.ts",
     "lint": "node_modules/.bin/eslint .",
     "lint:style": "npx stylelint '**/*.scss'",
-    "test": "./node_modules/.bin/mocha"
+    "test": "mocha --require ts-node/register --require ignore-styles --require jsdom-global/register '**/*.spec.ts'"
   },
   "keywords": [],
   "author": "",

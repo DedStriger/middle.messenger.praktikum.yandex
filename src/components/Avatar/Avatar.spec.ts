@@ -1,6 +1,6 @@
 import { assert, expect } from "chai";
-const {default: Avatar} = require('./Avatar.ts')
 import { checkTestProps } from "../../../utils/checkTestProps";
+import Avatar from "./Avatar";
 
 
 const testProps = {

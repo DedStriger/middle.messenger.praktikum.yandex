@@ -1,6 +1,6 @@
 import { assert, expect } from "chai";
-const {default: Back} = require('./Back.ts')
 import { checkTestProps } from "../../../utils/checkTestProps";
+import Back from "./Back";
 
 const testProps = {
   id: 'test',

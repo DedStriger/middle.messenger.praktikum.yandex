@@ -4,6 +4,9 @@ import { ALL_LINK, NOT_FOUND_LINK } from "../utils/links";
 
 function render(query: string, block: Block<any>) {
     const root = document.querySelector(query);
+    if(!root){
+      return;
+    }
     root!.innerHTML = block.getFirstRender();
     return root;
   }
@@ -75,7 +78,7 @@ export default class Router {
     window.onpopstate = (event: PopStateEvent) => {
         const path = (event.currentTarget as Window).location.pathname
         this._checkUnexistRoute(path)
-      this._onRoute(path);
+        this._onRoute(path);
     };
     this._checkUnexistRoute(window.location.pathname)
     this._onRoute(window.location.pathname);
@@ -83,7 +86,7 @@ export default class Router {
 
   _checkUnexistRoute(pathname: string){
     if(!ALL_LINK.includes(pathname)){
-        this.go(NOT_FOUND_LINK)
+      this.go(NOT_FOUND_LINK)
      }
   }
 
@@ -102,7 +105,9 @@ export default class Router {
   }
 
   go(pathname: string) {
-     this.history.pushState({}, "", pathname);
+    if(pathname !== NOT_FOUND_LINK){
+      this.history.pushState({}, "", pathname);
+    }
     this._onRoute(pathname);
   }
 

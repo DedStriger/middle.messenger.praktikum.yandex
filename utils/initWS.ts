@@ -15,7 +15,7 @@ export const initWS = async (chatId: string | number, setProps: (props: Partial<
           if(d.status === 200){
               userID = data.id;
           }else{
-              alert(data.reason)
+            console.log(data.reason)
           }
       })
 
@@ -25,7 +25,7 @@ export const initWS = async (chatId: string | number, setProps: (props: Partial<
         if(d.status === 200){
             token = data.token;
         }else{
-            alert(data.reason)
+          console.log(data.reason)
         }
       })
       const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${userID}/${chatId}/${token}`);

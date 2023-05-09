@@ -1,7 +1,0 @@
-{
-    "extensions": ["ts"],
-    "spec": ["**/*.spec.ts"],
-    "src": "./tsconfig.json",
-    "require": ["ignore-styles", "ts-node/register", "jsdom-global/register"],
-    "recursive": false
-  } 

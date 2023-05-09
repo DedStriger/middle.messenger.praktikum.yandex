@@ -10,7 +10,7 @@ import { apiUrl } from '../../../utils/apiUrl';
 import { ResponseApi } from '../../../utils/respType';
 import { LOGIN_LINK } from '../../../utils/links';
 import { HTTP, router } from '../../../static/js';
-import Back from '../../components/Back/Back';
+// import Back from '../../components/Back/Back';
 
 windowsEvents['editFormSubmit'] = async (e: Event) => {
         e.preventDefault()
@@ -90,7 +90,7 @@ windowsEvents['editFormSubmit'] = async (e: Event) => {
             }
         })
     }
-    const back = new Back({id: 'editBack'})
+    // const back = new Back({id: 'editBack'})
     const email = new EditInput({
         label: 'Почта',
         name: 'email',
@@ -164,7 +164,8 @@ windowsEvents['editFormSubmit'] = async (e: Event) => {
         type: 'button',
     })
     export const editProps = {
-        back: back.getFirstRender(),
+        // back: back.getFirstRender(),
+        back: '',
         avatar: avatar.getFirstRender(),
         email: email.getFirstRender(),
         login: login.getFirstRender(),
