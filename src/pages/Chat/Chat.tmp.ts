@@ -5,7 +5,7 @@ export default `
     <div class="sidebar">
         <a href="${EDIT_PROFILE}" class='sidebar__link'>
             <span>Профиль</span>
-            <img src="/sm-arrow.svg" alt="arrow">
+            <img src="/assets/sm-arrow.svg" alt="arrow">
         </a>
         {{{search}}}
         <div class='sidebar__list'>

@@ -34,13 +34,13 @@ export default `
     <form class="message__form" onsubmit='{{submit}}'>
         <div class="message__form-file">
             <label for="file">
-                <img src="/clip.svg" alt="clip">
+                <img src="/assets/clip.svg" alt="clip">
             </label>
             <input type="file" name="file" id="file">
         </div>
         <input type="text" placeholder="Сообщение" name='message' id='message' class="message__form-mess">
         <button type="submit" class="message__form-btn">
-            <img src="/arrow.svg" alt="arrow">
+            <img src="/assets/arrow.svg" alt="arrow">
         </button>
     </form>
 </div>

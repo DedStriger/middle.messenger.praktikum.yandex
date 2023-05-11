@@ -2,7 +2,7 @@ export default `
     <div class='container'>
     <div id='editBack'>
         <button onClick='window.events.goBack()' class='back'>
-            <img src='/arrow.svg' />
+            <img src='/assets/arrow.svg' />
         </button>
     </div>
         <div class='content'>
