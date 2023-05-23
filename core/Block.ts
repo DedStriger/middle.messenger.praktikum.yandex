@@ -109,7 +109,7 @@ export default class Block<T> {
       const self = this;
       return new Proxy(props, {
         get(target: any, prop: string) {
-          if (prop.indexOf("_") === 0) {
+          if (prop.indexOf && prop.indexOf("_") === 0) {
             throw new Error("нет доступа");
           }
   

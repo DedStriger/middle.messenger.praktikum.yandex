@@ -43,7 +43,7 @@ export default class Chat extends Block<ChatProps>{
         }
 
         const getChats = () => {
-            HTTP.get(`${apiUrl}chats`)
+             HTTP.get(`${apiUrl}chats`)
             .then((d: ResponseApi) => {
                 const data = JSON.parse(d.response)
                 if(d.status === 200){
@@ -64,6 +64,7 @@ export default class Chat extends Block<ChatProps>{
                 }
             })
             .catch((e: unknown) => alert(e))
+            this.setProps({getChats: true})
         }
 
         windowsEvents['removeChat'] = (id: string) => {
@@ -97,7 +98,6 @@ export default class Chat extends Block<ChatProps>{
             })
             .catch((e: unknown) => alert(e))
         }
-
        !this.props.getChats && getChats()
     }
 

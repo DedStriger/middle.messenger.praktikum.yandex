@@ -1,12 +1,11 @@
 import { EDIT_PROFILE } from '../../../utils/links'
-import arrow from '../../assets/sm-arrow.svg'
 
 export default `
 <div class='chat-container'>
     <div class="sidebar">
         <a href="${EDIT_PROFILE}" class='sidebar__link'>
             <span>Профиль</span>
-            <img src="${arrow}" alt="arrow">
+            <img src="/assets/sm-arrow.svg" alt="arrow">
         </a>
         {{{search}}}
         <div class='sidebar__list'>

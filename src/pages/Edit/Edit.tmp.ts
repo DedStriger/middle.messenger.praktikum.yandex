@@ -1,6 +1,10 @@
 export default `
     <div class='container'>
-        {{{back}}}
+    <div id='editBack'>
+        <button onClick='window.events.goBack()' class='back'>
+            <img src='/assets/arrow.svg' />
+        </button>
+    </div>
         <div class='content'>
         {{{avatar}}}
             <form onsubmit="{{submit}}">

@@ -1,5 +1,4 @@
 import './Edit.scss';
-import Back from '../../components/Back/Back';
 import Button from '../../components/Button/Button';
 import Avatar from '../../components/Avatar/Avatar';
 import EditInput from '../../components/EditInput/EditInput';
@@ -12,7 +11,7 @@ import { ResponseApi } from '../../../utils/respType';
 import { LOGIN_LINK } from '../../../utils/links';
 import { HTTP, router } from '../../../static/js';
 
-    windowsEvents['editFormSubmit'] = async (e: Event) => {
+windowsEvents['editFormSubmit'] = async (e: Event) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement
         if(form.querySelector('input.error')){
@@ -65,7 +64,8 @@ import { HTTP, router } from '../../../static/js';
         }
 
     }
-    windowsEvents['editAvatarLoad'] = (e: File) => { 
+
+    windowsEvents['editAvatarLoad'] = () => { 
         const avatar = document.querySelector('#avatar img') as HTMLImageElement | null
         const fileInput = document.getElementById('file') as HTMLInputElement
         if(!avatar || !fileInput || !fileInput.files){
@@ -89,7 +89,11 @@ import { HTTP, router } from '../../../static/js';
             }
         })
     }
-    const back = new Back({id: 'editBack'})
+
+    windowsEvents['goBack'] = () => {
+        router.back()
+    }
+
     const email = new EditInput({
         label: 'Почта',
         name: 'email',
@@ -163,7 +167,8 @@ import { HTTP, router } from '../../../static/js';
         type: 'button',
     })
     export const editProps = {
-        back: back.getFirstRender(),
+        // back: back.getFirstRender(),
+        back: '',
         avatar: avatar.getFirstRender(),
         email: email.getFirstRender(),
         login: login.getFirstRender(),

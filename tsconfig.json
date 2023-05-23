@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
-        "target": "es2016",
+        "target": "es2022",
         "declaration": false,
         "module": "commonjs",
         "noImplicitAny": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "sourceMap": true,
-        "strictNullChecks": true
-    }
+        "strictNullChecks": true,
+        "allowImportingTsExtensions": false,
+    },
+    "include": ["./src", "types.d.ts", "./core"]
 }
